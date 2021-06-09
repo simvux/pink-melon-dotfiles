@@ -1,0 +1,121 @@
+# Configuration for Alacritty, the GPU enhanced terminal emulator
+
+env:
+  TERM: xterm-256color
+
+window.dimensions:
+  columns: 84
+  lines: 24
+
+window.padding:
+  x: 3
+  y: 3
+
+# When true, bold text is drawn using the bright variant of colors.
+draw_bold_text_with_bright_colors: false
+
+font:
+  normal:
+    family: terminus
+    style: Regular
+  bold:
+    family: terminus
+    style: Regular
+  italic:
+    family: terminus
+    style: Regular
+  size: 12.0
+
+  offset:
+    x: 0
+    y: 0
+  glyph_offse:
+    x: 0
+    y: 0
+
+colors:
+  # Default colors
+  primary:
+    background: '#0a0000'
+    foreground: '#f4e1e4'
+
+    # Bright and dim foreground colors
+    #
+    # The dimmed foreground color is calculated automatically if it is not present.
+    # If the bright foreground color is not set, or `draw_bold_text_with_bright_colors`
+    # is `false`, the normal foreground color will be used.
+    #dim_foreground: '#9a9a9a'
+    #bright_foreground: '#ffffff'
+
+  # Cursor colors
+  #
+  # Colors which should be used to draw the terminal cursor. If these are unset,
+  # the cursor color will be the inverse of the cell color.
+  cursor:
+    text: '#000000'
+    cursor: '#cccccc'
+
+  # Selection colors
+  #
+  # Colors which should be used to draw the selection area. If selection
+  # background is unset, selection color will be the inverse of the cell colors.
+  # If only text is unset the cell text color will remain the same.
+  selection:
+    text: '#000000'
+    background: '#222222'
+
+  # Normal colors
+  normal:
+    black:   '#000000'
+    red:     '#ff0000'
+    green:   '#d36578'
+    yellow:  '#e92648'
+    blue:    '#cf5a6d'
+    magenta: '#ff00ff'
+    cyan:    '#df8f9c'
+    white:   '#ffffff'
+
+  # Bright colors
+  bright:
+    black:   '#cf5a6d'
+    red:     '#ff0000'
+    green:   '#c70426'
+    yellow:  '#c70426'
+    blue:    '#cf5a6d'
+    magenta: '#cf5a6d'
+    cyan:    '#df8f9c'
+    white:   '#ffffff'
+
+# Background opacity
+background_opacity: 0.8
+
+mouse_bindings:
+  - { mouse: Middle, action: Paste}
+mouse:
+  double_click: { threshold: 300 }
+  triple_click: { threshold: 300 }
+selection:
+  semantic_escape_chars: ",│`|:\"' ()[]{}<>"
+
+hide_cursor_when_typing: false # xbanish already does this in a global scale
+cursor_style: Block
+live_config_reload: true
+
+key_bindings:
+  # (Windows, Linux, and BSD only)
+  - { key: V,        mods: Control|Shift, action: Paste            }
+  - { key: C,        mods: Control|Shift, action: Copy             }
+  - { key: Insert,   mods: Shift,         action: PasteSelection   }
+  - { key: Key0,     mods: Control,       action: ResetFontSize    }
+  - { key: Equals,   mods: Control,       action: IncreaseFontSize }
+  - { key: Plus,      mods: Control,       action: IncreaseFontSize }
+  - { key: Minus,    mods: Control,       action: DecreaseFontSize }
+
+  - { key: Paste,                    action: Paste                            }
+  - { key: Copy,                     action: Copy                             }
+  - { key: L,         mods: Control, action: ClearLogNotice                   }
+  - { key: L,         mods: Control, chars: "\x0c"                            }
+  - { key: PageUp,    mods: Shift,   action: ScrollPageUp,   mode: ~Alt       }
+  - { key: PageDown,  mods: Shift,   action: ScrollPageDown, mode: ~Alt       }
+  - { key: Home,      mods: Shift,   action: ScrollToTop,    mode: ~Alt       }
+  - { key: End,       mods: Shift,   action: ScrollToBottom, mode: ~Alt       }
